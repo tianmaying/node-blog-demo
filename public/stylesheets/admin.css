@@ -1,0 +1,27 @@
+
+.container{
+    margin-bottom: 20px;
+}
+
+#edit #content{
+    height: 385px;
+}
+
+#edit #preview{
+    height: 460px;
+    overflow: auto;
+}
+
+#posts .table{
+    margin-top: 30px;
+}
+#posts .table .title{
+
+}
+#posts .table .date{
+    width: 300px;
+    vertical-align: middle;
+}
+#posts .table .operation{
+    width: 100px;
+}

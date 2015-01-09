@@ -1,0 +1,43 @@
+<html>
+<head>
+    {{>head}}
+  <link rel="stylesheet" href="/stylesheets/admin.css">
+  <script src="/javascripts/posts.js"></script>
+</head>
+
+<body id="posts">
+
+<div class="container">
+
+  {{>admin_header}}
+
+  <div class="row">
+
+    <div class="col-sm-3">
+        {{>profile_nav this}}
+    </div>
+
+    <div class="col-sm-9">
+
+      <table class="table">
+        <tbody>
+        {{#each posts}}
+          <tr>
+            <td class="title"><a href="/post/{{id}}">{{title}}</a></td>
+            <td class="date text-muted">
+              <small>{{detailDate date}}</small>
+            </td>
+            <td class="operation">
+              <a class="btn btn-xs btn-primary" href="/admin/post/{{id}}">编辑</a>
+              <a class="btn btn-xs btn-danger" onclick="delPost('{{id}}')">删除</a>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

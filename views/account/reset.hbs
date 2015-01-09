@@ -1,0 +1,36 @@
+<html>
+<head>
+  {{>head}}
+  <link rel="stylesheet" href="/stylesheets/account.css">
+  <script src="/javascripts/account.js"></script>
+</head>
+
+<body id="reset">
+
+<div class="container">
+  {{>common_header}}
+
+  <p>在此可以重置用户 {{user.username}} 的密码：</p>
+
+  <form class="form" method="post" onsubmit="return resetPassword()">
+
+    <div class="form-group">
+      <label for="password">新密码</label>
+      <input name="password" id="password" type="password"
+             class="form-control" placeholder="输入您的新密码">
+    </div>
+    <div class="form-group">
+      <label for="password1">新密码</label>
+      <input name="password1" id="password1" type="password"
+             class="form-control" placeholder="再次输入您的新密码">
+    </div>
+
+    <div class="alert alert-danger" style="display:none;"></div>
+
+    <button class="btn btn-primary" type="submit">提交</button>
+  </form>
+
+</div>
+
+</body>
+</html>

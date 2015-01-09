@@ -1,0 +1,29 @@
+<html>
+<head>
+    {{>head}}
+  <link rel="stylesheet" href="/stylesheets/home.css">
+  <script src="/javascripts/home-post.js"></script>
+</head>
+
+<body>
+
+{{>home_header}}
+
+<div class="container">
+
+    {{#with post}}
+      <div class="post">
+        <div class="page-header">
+          <h3>{{title}}</h3>
+          <small class="text-muted">{{detailDate date}}</small>
+
+          <a class="pull-right" href="/{{author.id}}">{{author.username}}</a>
+        </div>
+
+        <div class="post-content">
+          <script type="text/plain" id="content">{{{content}}}</script></div>
+      </div>
+    {{/with}}
+</div>
+</body>
+</html>

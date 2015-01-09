@@ -1,0 +1,48 @@
+
+.jumbo{
+    background: #2d2d2d;
+    height: 350px;
+    box-shadow: inset 0 -1px 0 #ededed, 0 1px 5px rgba(0,0,0,.3);
+}
+.jumbo .title{
+    padding: 60px 0 10px;
+    text-align: center;
+    color: #ccc;
+}
+.jumbo .navbar{
+    padding: 20px;
+    margin: 0;
+}
+.jumbo .navbar .home{
+    color: rgb(132, 1, 1);
+    transition: all 0.5s;
+}
+.jumbo .navbar .home:hover{
+    text-decoration: none;
+    color: rgb(231, 30, 30);
+}
+.jumbo .description{
+    margin: 0 auto;
+    width: 520px;
+    color: #777;
+}
+.jumbo .sign{
+    margin: 5px auto 0;
+    text-align: right;
+    width: 520px;
+    color: #777;
+}
+
+#index .panel{
+    margin-top: 20px;
+}
+#index .panel ul{
+    margin-bottom: 0;
+}
+#index .panel ul li{
+    height: 30px;
+}
+
+.container{
+    margin-bottom: 20px;
+}

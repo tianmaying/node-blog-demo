@@ -1,0 +1,37 @@
+<html>
+<head>
+    {{>head}}
+  <link rel="stylesheet" href="/stylesheets/admin.css">
+  <script src="/javascripts/admin-post.js"></script>
+</head>
+
+<body id="edit">
+
+<div class="container">
+
+  {{>admin_header}}
+
+  <div class="row">
+    <div class="col-sm-6">
+      <form class="form" method="post" action="/admin/post/{{id}}">
+        <div class="form-group">
+          <label for="title">标题</label>
+          <input id="title" class="form-control" name="title" value="{{post.title}}" required="">
+        </div>
+        <textarea name="content" class="form-control" id="content" value="{{post.content}}"></textarea>
+      </form>
+    </div>
+    <div class="col-sm-6">
+      <div id="preview"></div>
+    </div>
+
+  </div>
+
+  <div class="alert alert-danger" style="display: none;"></div>
+
+  <a class="btn btn-primary" onclick="save();">保存</a>
+  <a class="btn btn-warning" href="/admin/post">取消</a>
+</div>
+
+</body>
+</html>

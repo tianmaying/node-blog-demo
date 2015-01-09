@@ -1,0 +1,51 @@
+<html>
+<head>
+    {{>head}}
+  <link rel="stylesheet" href="/stylesheets/admin.css">
+  <!--<script src="/javascripts/admin-post.js"></script>-->
+</head>
+
+<body id="profile">
+
+<div class="container">
+
+  {{>admin_header}}
+
+  <div class="row">
+
+    <div class="col-sm-3">
+        {{>profile_nav this}}
+    </div>
+
+    <div class="col-sm-9">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">{{user.username}} 的博客</div>
+        <div class="panel-body">
+
+          <form class="form" method="post">
+
+            <div class="form-group">
+              <label for="title">博客名称</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="张三的博客"
+                     value="{{user.title}}">
+            </div>
+
+            <div class="form-group">
+              <label for="description">博客描述</label>
+              <input type="text" class="form-control" id="description" name="description" placeholder="这是一个了不起的博客..."
+                     value="{{user.description}}">
+            </div>
+
+            <button type="submit" class="btn btn-default">保存</button>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

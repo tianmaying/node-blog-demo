@@ -1,0 +1,28 @@
+<html>
+<head>
+    {{>head}}
+  <link rel="stylesheet" href="/stylesheets/home.css">
+</head>
+
+<body>
+
+{{>home_header}}
+
+<div class="container">
+
+{{#each posts}}
+  <div class="post">
+    <div class="page-header">
+      <h3><a href="/post/{{id}}">{{title}}</a></h3>
+      <small class="text-muted">{{detailDate date}}</small>
+    </div>
+
+    <div class="post-content">
+        {{excerpt content}}
+    </div>
+  </div>
+{{/each}}
+
+</div>
+</body>
+</html>
