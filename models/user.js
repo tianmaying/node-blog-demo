@@ -6,7 +6,6 @@ var crypto = require('crypto');
 var UserSchema = new Schema({
     username: String,           //用户名
     password: String,
-    avatar: String,             //头像
     title: String,              //博客名
     description: String,        //博客描述
     active: {                   //激活状态

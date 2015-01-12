@@ -16,7 +16,7 @@ var hbsutils = require('hbs-utils')(hbs);
 require('./utils/hbs-helpler')(hbs);
 
 // mongoose setup
-mongoose.connect('mongodb://localhost/blog');
+mongoose.connect('mongodb://localhost/tm-blog');
 
 // passport setup
 passport.use(User.createStrategy());
@@ -42,6 +42,7 @@ app.use(session({secret: 'hello! TMY', resave: true, saveUninitialized: true, st
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(require('./utils/render'));
 
 app.use('/', require('./routes/home'));
 app.use('/account', require('./routes/account'));

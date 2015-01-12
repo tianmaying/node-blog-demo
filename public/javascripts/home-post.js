@@ -8,3 +8,23 @@ $(function(){
         $ele.html(marked($ele.find('#content').html()));
     });
 });
+
+function comment(){
+    var content = $('#new-comment').val();
+    if(content.trim() == ''){
+        return $('.alert').html('评论不能为空').show();
+    }
+    $('#new-comment').val('');
+
+    $.post('', {content: content})
+        .done(function(data){
+            var comment = $('<div class="comment"></div>')
+                .append($('<h5></h5>').html(data.author))
+                .append(data.content);
+            $('#comments').append(comment);
+            $('.alert').hide();
+        })
+        .fail(function(data){
+            return $('.alert').html('评论失败：'+data).show();
+        })
+}

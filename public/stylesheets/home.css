@@ -43,6 +43,16 @@
     height: 30px;
 }
 
+#post form{
+    max-width: 500px;
+}
+#post #new-comment{
+    margin-top: 10px;
+}
+#post #operation{
+    margin-top:10px;
+}
+
 .container{
     margin-bottom: 20px;
 }

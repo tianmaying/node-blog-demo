@@ -1,29 +1,62 @@
 <html>
 <head>
-    {{>head}}
+  {{>head}}
   <link rel="stylesheet" href="/stylesheets/home.css">
   <script src="/javascripts/home-post.js"></script>
 </head>
 
-<body>
+<body id="post">
 
 {{>home_header}}
 
 <div class="container">
 
-    {{#with post}}
-      <div class="post">
-        <div class="page-header">
-          <h3>{{title}}</h3>
-          <small class="text-muted">{{detailDate date}}</small>
+  {{#with post}}
+    <div class="post">
+      <div class="page-header">
+        <h3>{{title}}</h3>
+        <small class="text-muted">{{detailDate date}}</small>
 
-          <a class="pull-right" href="/{{author.id}}">{{author.username}}</a>
-        </div>
-
-        <div class="post-content">
-          <script type="text/plain" id="content">{{{content}}}</script></div>
+        <a class="pull-right" href="/{{author.id}}">{{author.username}}</a>
       </div>
-    {{/with}}
+
+      <div class="post-content">
+        <script type="text/plain" id="content">{{{content}}}</script>
+      </div>
+    </div>
+
+    <div>
+      <div class="page-header">
+        <h4>评论</h4>
+      </div>
+
+      <div id="comments">
+        {{#each comments}}
+          <div class="comment">
+            <h5>{{author.username}}</h5>
+            {{content}}
+          </div>
+        {{/each}}
+      </div>
+
+      <form>
+        <textarea name="content" id="new-comment" class="form-control"></textarea>
+
+        <div class="alert alert-danger" style="display: none;"></div>
+
+        <div id="operation">
+          {{#if ../req.user}}
+            <span>{{../req.user.username}}</span>
+            <a class="btn btn-primary" onclick="comment()">提交</a>
+          {{else}}
+            <a class="btn btn-primary" href="/account/login">登录</a>
+          {{/if}}
+        </div>
+      </form>
+
+    </div>
+  {{/with}}
+
 </div>
 </body>
 </html>

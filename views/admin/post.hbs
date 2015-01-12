@@ -16,7 +16,7 @@
       <form class="form" method="post" action="/admin/post/{{id}}">
         <div class="form-group">
           <label for="title">标题</label>
-          <input id="title" class="form-control" name="title" value="{{post.title}}" required="">
+          <input id="title" class="form-control" name="title" value="{{post.title}}" required="" autofocus="">
         </div>
         <textarea name="content" class="form-control" id="content" value="{{post.content}}"></textarea>
       </form>

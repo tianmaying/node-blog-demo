@@ -3,7 +3,14 @@
     <a class="btn btn-lg btn-link home" href="/">
       <i class="fa fa-home"></i> 天码博客
     </a>
-    <a class="btn btn-sm btn-default pull-right" href="/admin/post">我的账户</a>
+    {{#if req.user}}
+      <a class="btn btn-sm btn-default pull-right" href="/admin/post">我的账户</a>
+    {{else}}
+      <div class="pull-right">
+        <a class="btn btn-sm btn-primary" href="/account/login">登录</a>
+        <a class="btn btn-sm btn-default" href="/account/signup">注册</a>
+      </div>
+    {{/if}}
   </div>
 
   <h3 class="title">{{title}}</h3>
@@ -14,7 +21,7 @@
   </div>
 
   <div class="sign">
-    <span>——天马营</span>
+    <span>——天码营</span>
   </div>
 
 </div>
