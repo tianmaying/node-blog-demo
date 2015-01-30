@@ -4,17 +4,10 @@
 
 var nodemailer = require('nodemailer');
 var _extend = require('util')._extend;
+var config = require('../config');
 
 // create reusable transporter object using SMTP transport
-var transporter = nodemailer.createTransport({
-    host: 'smtp.pku.edu.cn',
-    port: 25,
-    ignoreTLS: true,
-    auth: {
-        user: '1301213734@pku.edu.cn',
-        pass: 'bdrj1800'
-    }
-});
+var transporter = nodemailer.createTransport(config.smtp);
 
 var defaultMailOptions = {
     from: '天马营教程 <1301213734@pku.edu.cn>',

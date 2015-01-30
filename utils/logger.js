@@ -23,6 +23,7 @@ function responseLogger(req, res, next) {
         if (chunk) chunks.push(chunk);
         var body = Buffer.concat(chunks).toString('utf8');
 
+        console.log('------------------------------');
         console.log('RESPONSE');
         console.log(body);
 

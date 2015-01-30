@@ -5,11 +5,11 @@ var User = require('../models/user');
 var Post = require('../models/post');
 var crypto = require('crypto');
 var fs = require('fs');
+var config = require('../config');
 
 router.route('/signup')
     .get(function (req, res) {
         res.render('account/signup', {title: '注册'});
-        console.log(req)
     })
     .post(function (req, res, next) {
         User.register(new User({username: req.body.username}), req.body.password,
@@ -26,7 +26,7 @@ router.route('/signup')
                     });
                 });
 
-                var link = 'http://' + req.headers.host + '/account/active/' + user._id;
+                var link = config.protocol + '://' + config.host + '/account/active/' + user._id;
                 mailer.send({
                     to: req.body.username,
                     subject: '欢迎注册天码博客',
@@ -71,7 +71,7 @@ router.route('/forgot')
                 user.resetPasswordToken = buf.toString('hex');
                 user.resetPasswordExpires = Date.now() + 3600000;   // 1 hour
 
-                var link = 'http://' + req.headers.host + '/account/reset/' + user.resetPasswordToken;
+                var link = config.protocol + '://' + config.host + '/account/reset/' + user.resetPasswordToken;
                 user.save(function (err, user) {
                     if (err) return next(err);
                     mailer.send({
@@ -124,7 +124,9 @@ router.route('/reset/:token')
                     if (err) return next(err);
                     res.render('message', {
                         title: '重置密码成功',
-                        content: user.username + '的密码已成功重置，请前往<a href="/account/login">登录</a>。'
+                        content: user.username + '的密码已成功重置，请前往<a href="' +
+                        config.protocol + '://' +
+                        config.host + '/account/login">登录</a>。'
                     });
                 });
             });
