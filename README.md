@@ -1,5 +1,3 @@
-# 开发环境搭建
-
 ## 安装 mongoDB、redis
 
 ## 解决依赖
@@ -25,7 +23,7 @@ cp config.js.example config.js
 grunt server
 ```
 
-# 构建运行
+## 构建运行
 
 ```bash
 # 开发版本
