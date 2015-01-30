@@ -15,7 +15,7 @@ router.route('/signup')
         User.register(new User({username: req.body.username}), req.body.password,
             function (err, user) {
                 if (err)
-                    return res.send({status: 'error', message: err.message || '未知原因'});
+                    return res.status(400).send(err.message || '未知原因');
 
                 fs.readFile(process.cwd() + '/data/demo.md', function (err, data) {
                     if (err) return next(err);

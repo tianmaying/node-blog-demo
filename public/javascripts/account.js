@@ -46,17 +46,10 @@ function signup(){
         return;
     }
     $.post('', $('form').serialize())
-        .done(function(data){
-            if(data.status == 'error') warn(data.message);
-            else{
-                var doc = document.open("text/html", "replace");
-                doc.write(data);
-                doc.close();
-            }
+        .done(function(){
+            location.href='/account/login';
         })
-        .fail(function(){
-            warn('注册失败');
-        });
+        .fail(warn);
 }
 
 function simpleValidate(){
