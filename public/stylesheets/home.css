@@ -1,5 +1,69 @@
+@media (min-width: 1200px) {
+    .container {
+        width: 800px;
+    }
+}
+@media (min-width: 992px){
+    .container {
+        width: 800px;
+    }
+}
 
-.jumbo{
+.navbar{
+    position: absolute; 
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: none;
+}
+
+.navbar .navbar-brand{
+    font-size: 23px;
+    color: white;
+    padding-top: 20px;
+    line-height: 23px;
+}
+
+.navbar .navbar-right{
+    float: right;
+    padding-top: 20px;
+}
+.navbar .navbar-right .btn{
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+    padding: 5px 20px;
+    margin-left: 7px;
+}
+.navbar .navbar-right .btn.dashboard{
+    padding: 5px 10px;
+}
+.navbar .navbar-right .btn.dashboard .glyphicon{
+    margin-right: 5px;
+}
+.banner{
+    position: relative;
+    height: 280px;
+    background-image: url('/images/bg1.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 30%;
+    text-align: center;
+}
+
+.banner .blog-intro{
+    margin-top: 120px;
+    padding: 15px;
+    color: white;
+}
+
+.blog-intro .title{
+    font-size: 28px;
+}
+
+.blog-intro .description{
+    font-size: 18px;
+}
+/*.jumbo{
     background: #2d2d2d;
     height: 350px;
     box-shadow: inset 0 -1px 0 #ededed, 0 1px 5px rgba(0,0,0,.3);
@@ -31,9 +95,9 @@
     text-align: right;
     width: 520px;
     color: #777;
-}
+}*/
 
-#index .panel{
+/*#index .panel{
     margin-top: 20px;
 }
 #index .panel ul{
@@ -51,8 +115,48 @@
 }
 #post #operation{
     margin-top:10px;
-}
+}*/
 
-.container{
-    margin-bottom: 20px;
+.blog-item{
+    padding: 25px 20px;
+    background-color: #f8f8f8;
+    border-radius: 7px;
+    margin-bottom: 30px;
+}
+.blog-item .title{
+    margin-top: 0;
+    margin-bottom: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.blog-item .title a{
+    color: #555;
+}
+.blog-item .title a:hover{
+    color: #7ac6db;
+    text-decoration: none;
+}
+.blog-item div{
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+}
+.blog-item .user{
+    margin-bottom: 5px;
+}
+.blog-item .description{
+    height: 36px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.blog-item .glyphicon-home{
+    font-size: 20px;
+    color: #dbdbdb;
+}
+.blog-item .user {
+    color: #979797;
+}
+.blog-item .user .glyphicon-user{
+    color: #7ac6db;
 }

@@ -1,0 +1,86 @@
+/*@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en");*/
+
+@font-face {
+  font-family: 'Rockwell';
+  src: url('/fonts/rockwell.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('/fonts/rockwell.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+body {
+  font-family: "Rockwell", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+  font-size: 13px;
+  color: #555;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: #7ac6db;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #6bafb2;
+}
+.color-red{
+	color: #ed7878;
+	/*color: rgba(239,123,119,1);*/
+}
+
+.color-blue{
+	color: #7ac6db;
+	/*color: rgba(122,198,219,1);*/
+}
+.color-blue-dark{
+	color: #6bafb2;
+}
+
+.color-grey{
+	color: #c4c4c4;
+	/*rgba(196,196,196,1);*/
+}
+
+.btn:active{
+	box-shadow: none;
+	opacity: .7;
+}
+
+.btn-red {
+  color: white;
+  background-color: rgba(239,123,119,1);
+}
+.btn-red:hover, .btn-red:focus{
+	color: white;
+	background-color: rgba(239,123,119,.7);
+}
+
+.btn-grey {
+  color: white;
+  background-color: rgba(196,196,196,.5);
+}
+
+.btn-grey:hover, .btn-grey:focus{
+	color: white;
+	background-color: rgba(196,196,196,.3);
+}
+
+.btn-hollow {
+  color: white;
+  background-color: transparent;
+  border-color: white;
+}
+.btn-hollow:hover, .btn-hollow:focus{
+	color: white;
+	border-color: rgba(255,255,255,.7);
+}
+
+.content{
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.footer{
+	padding: 15px;
+	text-align: center;
+	color: #979797;
+	background-color: #f8f8f8;
+}
