@@ -9,8 +9,8 @@ module.exports = {
         port: process.env.SMTP_PORT || 25,
         ignoreTLS: true,
         auth: {
-            user: process.env.SMTP_USER || '1301213734@pku.edu.cn',
-            pass: process.env.SMTP_PASS || 'bdrj1800'
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS
         }
     },
     protocol: process.env.NODE_PROTOCOL || 'http',
