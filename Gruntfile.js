@@ -17,8 +17,8 @@ module.exports = function(grunt) {
             prod: {
                 options: {
                     node_env: 'production',
-                    port: 80,
-                    background: true
+                    port: 3000,
+                    background: false
                 }
             }
         },
@@ -48,11 +48,6 @@ module.exports = function(grunt) {
                 files: ['app.js', '**/*.js', '!**/node_modules/**'],
                 tasks: ['express:dev'],
                 options: { spawn: false }
-            },
-            prod: {
-                files: ['app.js', '**/*.js', '!**/node_modules/**'],
-                tasks: ['express:prod'],
-                options: { spawn: false }
             }
         }
     });
@@ -61,9 +56,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-shell-spawn');
 
-    grunt.registerTask('dev', ['express:dev', 'watch:dev']);
-    grunt.registerTask('dist', ['express:prod', 'watch:prod']);
-
+    // 第三方服务器
     grunt.registerTask('server', ['shell:mongodb', 'shell:redis']);
+
+    // 发布
+    grunt.registerTask('dist', ['express:prod']);
+
+    // 开发
+    grunt.registerTask('dev', ['express:dev', 'watch:dev']);
     grunt.registerTask('default', ['dev']);
 };

@@ -26,7 +26,7 @@ router.route('/signup')
                     });
                 });
 
-                var link = config.protocol + '://' + config.host + '/account/active/' + user._id;
+                var link = config.protocol + '://' + config.host + ':' + config.port + '/account/active/' + user._id;
                 mailer.send({
                     to: req.body.username,
                     subject: '欢迎注册天码博客',

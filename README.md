@@ -10,10 +10,10 @@ npm install
 
 ## 项目配置
 
-创建配置文件`config.js`，我们提供了示例配置`config.js.example`，可以基于该示例创建自己的配置：
+创建配置文件config.js，我们提供了示例配置config.js.example，可以基于该示例创建自己的配置：
 
 ```bash
-cp config.js.example config.js 
+cp config.js.example config.js
 ```
 
 ## 启动服务

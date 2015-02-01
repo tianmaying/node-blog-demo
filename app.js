@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
 var multipart = require('connect-multiparty');
 var User = require('./models/user.js');
 var authRequired = require('./utils/auth-required.js');
@@ -14,9 +13,10 @@ var mongoose = require('mongoose');
 var hbs = require('hbs');
 var hbsutils = require('hbs-utils')(hbs);
 require('./utils/hbs-helpler')(hbs);
+var config = require('./config');
 
 // mongoose setup
-mongoose.connect('mongodb://localhost/tm-blog');
+mongoose.connect(config.mongo.url);
 
 // passport setup
 passport.use(User.createStrategy());
@@ -38,7 +38,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(multipart({uploadDir: __dirname + '/public/upload'}));
 app.use(cookieParser());
-app.use(session({secret: 'hello! TMY', resave: true, saveUninitialized: true, store: new RedisStore()}));
+
+if(app.get('env') === 'development'){
+    var RedisStore = require('connect-redis')(session);
+    app.use(session({secret: 'hello! TMY', resave: true, saveUninitialized: true, store: new RedisStore()}));
+}
+else{
+    app.use(session({secret: 'hello! TMY', cookie: { maxAge: 60000 }}));
+}
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
