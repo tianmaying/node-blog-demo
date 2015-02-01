@@ -5,7 +5,7 @@
 
 module.exports = {
     smtp: {
-        host: 'smtp.pku.edu.cn',
+        host: 'smtp.example.com',
         port: 25,
         ignoreTLS: true,
         auth: {

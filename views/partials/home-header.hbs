@@ -1,27 +1,36 @@
-<div class="jumbo">
-  <div class="navbar">
-    <a class="btn btn-lg btn-link home" href="/">
-      <i class="fa fa-home"></i> 天码博客
+<nav class="navbar navbar-static" role="navigation">
+  <div class="container">
+
+    <a class="navbar-brand nav-external" href="/">
+      My Blog
     </a>
-    {{#if req.user}}
-      <a class="btn btn-sm btn-default pull-right" href="/admin/post">我的账户</a>
-    {{else}}
-      <div class="pull-right">
-        <a class="btn btn-sm btn-primary" href="/account/login">登录</a>
-        <a class="btn btn-sm btn-default" href="/account/signup">注册</a>
+    <div class="navbar-right">
+      {{#if req.user}}
+        <a class="btn btn-sm btn-grey dashboard" href="/admin/post"><i class="glyphicon glyphicon-cog"></i>Dashboard</a>
+      {{else}}
+        <a class="btn btn-sm btn-red" href="/account/login">Login</a>
+        <a class="btn btn-sm btn-hollow" href="/account/signup">Sign Up</a>
+      {{/if}}
+    </div>
+  </div>
+</nav>
+<div class="banner">
+  <div class="container">
+    <div class="blog-intro">
+      <h1 class="title">
+        <!-- {{title}} -->
+        Blog Title
+      </h1>
+      <div class="description">
+        My first hand coded blog
+        <!-- 一个简单的博客系统。Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。 -->
       </div>
-    {{/if}}
+    </div>
+    
   </div>
 
-  <h3 class="title">{{title}}</h3>
-
-
-  <div class="description">
-    <span>一个简单的博客系统。Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。</span>
-  </div>
-
-  <div class="sign">
+  <!-- <div class="sign">
     <span>——天码营</span>
-  </div>
+  </div> -->
 
 </div>
