@@ -116,6 +116,10 @@
 #post #operation{
     margin-top:10px;
 }*/
+#index .content > h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
 
 .blog-item{
     padding: 25px 20px;
