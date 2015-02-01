@@ -5,15 +5,16 @@
 
 module.exports = {
     smtp: {
-        host: 'smtp.pku.edu.cn',
-        port: 25,
+        host: process.env.SMTP_HOST || 'smtp.pku.edu.cn',
+        port: process.env.SMTP_PORT || 25,
         ignoreTLS: true,
         auth: {
-            user: '1301213734@pku.edu.cn',
-            pass: 'bdrj1800'
+            user: process.env.SMTP_USER || '1301213734@pku.edu.cn',
+            pass: process.env.SMTP_PASS || 'bdrj1800'
         }
     },
-    protocol: 'http',
-    host: '127.0.0.1',
-    port: 3000
+    protocol: process.env.NODE_PROTOCOL || 'http',
+    env:  process.env.NODE_ENV  || 'development',
+    port: process.env.PORT || 3000,
+    host: process.env.HOST || '127.0.0.1'
 };

@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 var hbs = require('hbs');
 var hbsutils = require('hbs-utils')(hbs);
 require('./utils/hbs-helpler')(hbs);
+var config = require('config');
 
 // mongoose setup
 mongoose.connect('mongodb://localhost/tm-blog');
@@ -25,8 +26,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // app setup
 var app = express();
-app.set('env', process.env.NODE_ENV || 'development');
-app.set('port', process.env.PORT || 3000);
+app.set('env', config.env);
+app.set('port', config.port);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 hbsutils.registerWatchedPartials(__dirname + '/views/partials');
