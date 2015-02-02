@@ -2,7 +2,7 @@
   <div class="container">
 
     <a class="navbar-brand nav-external" href="/">
-      My Blog
+      {{author.username}}
     </a>
     <div class="navbar-right">
       {{#if req.user}}
@@ -18,12 +18,10 @@
   <div class="container">
     <div class="blog-intro">
       <h1 class="title">
-        <!-- {{title}} -->
-        Blog Title
+        {{author.title}}
       </h1>
       <div class="description">
-        My first hand coded blog
-        <!-- 一个简单的博客系统。Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。 -->
+        {{author.description}}
       </div>
     </div>
     

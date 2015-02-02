@@ -44,7 +44,7 @@ if(app.get('env') === 'development'){
     app.use(session({secret: 'hello! TMY', resave: true, saveUninitialized: true, store: new RedisStore()}));
 }
 else{
-    app.use(session({secret: 'hello! TMY', cookie: { maxAge: 60000 }}));
+    app.use(session({secret: 'hello! TMY', resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }}));
 }
 
 
