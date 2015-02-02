@@ -20,6 +20,20 @@ a {
 
 a:hover{
 	color: #6bafb2;
+	text-decoration: none;
+}
+
+a.inverse{
+  color: #555;
+}
+a.inverse:hover{
+  color: #7ac6db;
+  text-decoration: none;
+}
+
+hr{
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 .color-red{
 	color: #ed7878;
@@ -39,6 +53,10 @@ a:hover{
 	/*rgba(196,196,196,1);*/
 }
 
+.btn{
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+}
+
 .btn:active{
 	box-shadow: none;
 	opacity: .7;
@@ -51,6 +69,15 @@ a:hover{
 .btn-red:hover, .btn-red:focus{
 	color: white;
 	background-color: rgba(239,123,119,.7);
+}
+
+.btn-blue {
+  color: white;
+  background-color: rgba(122,198,219,1);
+}
+.btn-blue:hover, .btn-blue:focus{
+	color: white;
+	background-color: rgba(122,198,219,.7);
 }
 
 .btn-grey {
@@ -74,14 +101,175 @@ a:hover{
 	border-color: transparent;
 }
 
-.content{
-    padding-top: 50px;
-    padding-bottom: 100px;
+/**/
+@media (min-width: 1200px) {
+    .container {
+        width: 800px;
+    }
+}
+@media (min-width: 992px){
+    .container {
+        width: 800px;
+    }
 }
 
+.navbar{
+    position: absolute; 
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: none;
+}
+
+.navbar .navbar-brand{
+    font-size: 23px;
+    color: white;
+    padding-top: 20px;
+    line-height: 23px;
+}
+
+.navbar .navbar-right{
+    float: right;
+    padding-top: 20px;
+}
+.navbar .navbar-right .btn{
+    padding: 5px 20px;
+    margin-left: 7px;
+}
+.navbar .navbar-right .btn.dashboard{
+    padding: 5px 10px;
+}
+.navbar .navbar-right .btn.dashboard .glyphicon{
+    margin-right: 5px;
+}
+.banner{
+    position: relative;
+    height: 280px;
+    background-image: url('/images/bg1.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 30%;
+    text-align: center;
+}
+
+.banner .blog-intro{
+    margin-top: 120px;
+    padding: 15px;
+    color: white;
+}
+
+.blog-intro .title{
+    font-size: 28px;
+}
+
+.blog-intro .description{
+    font-size: 18px;
+}
+
+.content{
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.post > .post-heading{
+	margin-bottom: 10px;
+}
+.post > .post-heading > .post-title{
+	font-size: 23px;
+	margin-bottom: 5px;
+}
+.post > .post-heading > .post-info{
+	margin-bottom: 10px;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+}
+
+.post > .post-heading > .post-info > .pull-right > a{
+	text-decoration: underline;
+}
+
+.post > .post-content{
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+}
+
+.page-nav{
+	text-align: center;
+	font-size: 14px
+
+}
+.pagination>li>a{
+	color: #989898;
+	background-color: transparent;
+	border: none;
+	border-radius: 3px;
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+}
+.pagination>li>a:hover{
+	color: #fff;
+	background-color: #ddd;
+}
+.pagination>.active>a, 
+.pagination>.active>a:hover, 
+.pagination>.active>a:focus {
+z-index: 2;
+color: #fff;
+cursor: default;
+background-color: #ddd;
+}
+
+#blog-home .post:first-child .post-title{
+	margin-top: 0;
+}
+#post .post > .post-heading > hr{
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+#post .post > .post-content{
+	margin-bottom: 30px;
+}
+#post h4{
+	font-size: 23px;
+	margin-bottom: 15px;
+}
+
+.comment{
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+	margin-bottom: 15px;
+}
+.comment h5{
+
+}
+.comment p{
+	border-left: 1px solid #eee	;
+	padding-left: 15px;
+}
+
+#new-comment{
+	
+	margin-bottom: 15px;
+}
+.form-control{
+	box-shadow: none;
+}
+.form-control:focus {
+	border-color: #7ac6db;
+	box-shadow: none;
+}
+
+#operation{
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
+	color: #999;
+}
+#operation span {
+	margin-left: 5px;
+}
 .footer{
 	padding: 15px;
 	text-align: center;
 	color: #979797;
 	background-color: #f8f8f8;
+}
+
+.post-nav .pager .btn{
+	color: #aaa;
 }

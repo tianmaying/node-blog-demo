@@ -1,7 +1,7 @@
 <html>
 <head>
   {{>head}}
-  <link rel="stylesheet" href="/stylesheets/home.css">
+  <link rel="stylesheet" href="/stylesheets/global.css">
   <script src="/javascripts/home-post.js"></script>
 </head>
 
@@ -9,36 +9,45 @@
 
 {{>home_header}}
 
-<div class="container">
-
+<div class="container content">
+  <nav class="post-nav">
+    <ul class="pager">
+      <li class="previous"><a href="#" class="btn" href="/{{author.id}}"><span aria-hidden="true">&larr;</span> Go Back</a></li>
+    </ul>
+  </nav>
   {{#with post}}
     <div class="post">
-      <div class="page-header">
-        <h3>{{title}}</h3>
-        <small class="text-muted">{{detailDate date}}</small>
-
-        <a class="pull-right" href="/{{author.id}}">{{author.username}}</a>
+      <div class="post-heading">
+        <h3 class="post-title">{{title}}</h3>
+        <div class="post-info">
+          <small class="text-muted">Written 
+            <!-- by <strong><a class="inverse" href="/{{author.id}}">{{author.username}}</a></strong>  -->
+            on {{detailDate date}}</small>
+          <small class="pull-right"><a href="#comments">{{comments.length}} Comments</a></small>
+        </div>
+        <hr>
       </div>
 
       <div class="post-content">
         <script type="text/plain" id="content">{{{content}}}</script>
       </div>
+      <hr>
     </div>
 
+    <div id="comments">
+      <h4 class="color-blue">Comments</h4>
+      {{#each comments}}
+        <div class="comment">
+          <h5><a class="inverse" href="/{{author.id}}">{{author.username}}</a></h5>
+          <p>{{content}}</p>
+        </div>
+      {{/each}}
+    </div>
+
+    <hr>
+
     <div>
-      <div class="page-header">
-        <h4>评论</h4>
-      </div>
-
-      <div id="comments">
-        {{#each comments}}
-          <div class="comment">
-            <h5>{{author.username}}</h5>
-            {{content}}
-          </div>
-        {{/each}}
-      </div>
-
+      <h4 class="color-blue">Leave a Comment</h4>
       <form>
         <textarea name="content" id="new-comment" class="form-control"></textarea>
 
@@ -46,17 +55,16 @@
 
         <div id="operation">
           {{#if ../req.user}}
-            <span>{{../req.user.username}}</span>
-            <a class="btn btn-primary" onclick="comment()">提交</a>
+            <!-- <span>{{../req.user.username}}</span> -->
+            <a class="btn btn-red" onclick="comment()">Post</a>
+            <span>Logged in as Usermann</span>
           {{else}}
-            <a class="btn btn-primary" href="/account/login">登录</a>
+            <a class="btn btn-red" href="/account/login">Login</a>
+            <span>Log in to comment</span>
           {{/if}}
         </div>
       </form>
-
     </div>
   {{/with}}
-
-</div>
 </body>
 </html>
