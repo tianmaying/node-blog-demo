@@ -25,8 +25,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // app setup
 var app = express();
-app.set('env', process.env.NODE_ENV || 'development');
-app.set('port', process.env.PORT || 3000);
+app.set('env', config.env || 'development');
+app.set('port', config.port || 5000);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 hbsutils.registerWatchedPartials(__dirname + '/views/partials');

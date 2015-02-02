@@ -10,7 +10,7 @@ var config = require('../config');
 var transporter = nodemailer.createTransport(config.smtp);
 
 var defaultMailOptions = {
-    from: '天马营教程 <1301213734@pku.edu.cn>',
+    from: '天马营教程 <notification@tianmaying.com>',
     subject: 'test',
     //to: 'bar@blurdybloop.com, baz@blurdybloop.com',
     //text: 'test text',
