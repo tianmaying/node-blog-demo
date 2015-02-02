@@ -5,13 +5,16 @@
 
 module.exports = {
     smtp: {
-        host: 'smtp.example.com',
+        host: 'smtp.pku.edu.cn',
         port: 25,
         ignoreTLS: true,
         auth: {
-            user: 'your username',
-            pass: 'your password'
+            user: 'username',
+            pass: 'password'
         }
+    },
+    mongo:{
+        url: 'mongodb://localhost/tm-blog'
     },
     protocol: 'http',
     host: '127.0.0.1',

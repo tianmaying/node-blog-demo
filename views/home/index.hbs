@@ -7,21 +7,33 @@
 
 <body id="index">
 
-{{>home_header}}
+<div class="banner">
+  <div class="container">
+    <div class="blog-intro">
+      <h1 class="title">
+        Blog by TMY
+      </h1>
+      <div class="description">
+        一个简单的博客系统。Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="container content">
-  <h2>Registered Blogs</h2>
+  <h2>已注册用户</h2>
   <div class="row">
     {{#each users}}
     <div class="col-md-4 col-sm-6">
       <div class="blog-item">
         <span class="glyphicon glyphicon-home pull-right"></span>
-        <h3 class="title"><a href="/{{id}}">My Blog</a></h3>
+        <h3 class="title"><a href="/{{id}}">{{title}}</a></h3>
         <div class="user">
           <span class="glyphicon glyphicon-user"></span>
           {{username}}
         </div>
-        <div class="description">My first hand coded blog. Her name is Nicole. She's hot. Way prettier than my old QQ zone. You know what I mean?</div>
+        <div class="description">{{description}}</div>
       </div>
     </div>
     {{/each}}

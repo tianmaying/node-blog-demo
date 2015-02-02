@@ -67,8 +67,7 @@ router.route('/post/:id')
                 if (err) return next(err);
 
                 Comment.populate(post.comments, 'author');
-                console.log(post)
-                res.render('home/post', {post: post, title: post.title});
+                res.render('home/post', {post: post, title: post.title, author: post.author});
             })
     })
     .post(authRequired(function (req, res, next) {
