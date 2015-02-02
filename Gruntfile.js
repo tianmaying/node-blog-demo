@@ -1,3 +1,5 @@
+var config = require('./config');
+
 module.exports = function(grunt) {
 
     grunt.initConfig({
@@ -10,14 +12,14 @@ module.exports = function(grunt) {
             dev: {
                 options: {
                     node_env: 'development',
-                    port: 3000,
+                    port: config.port,
                     background: true
                 }
             },
             prod: {
                 options: {
                     node_env: 'production',
-                    port: 3000,
+                    port: config.port,
                     background: false
                 }
             }
