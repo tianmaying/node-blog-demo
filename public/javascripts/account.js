@@ -46,8 +46,8 @@ function signup(){
         return;
     }
     $.post('', $('form').serialize())
-        .done(function(){
-            location.href='/account/login';
+        .done(function(res){
+            info(res.responseText);
         })
         .fail(function(res){
             warn(res.responseText);
@@ -74,7 +74,13 @@ function simpleValidate(){
 }
 
 function warn(msg){
-    $('.alert').html(msg).show();
+    $('.alert').hide();
+    $('.alert-danger').html(msg).show();
+}
+
+function info(msg){
+    $('.alert').hide();
+    $('.alert-success').html(msg).show();
 }
 
 function validateEmail(email) {

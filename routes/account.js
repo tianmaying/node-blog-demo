@@ -32,11 +32,7 @@ router.route('/signup')
                     subject: '欢迎注册天码博客',
                     html: '请点击 <a href="' + link + '">此处</a> 激活。'
                 });
-                res.render('message', {
-                    title: '注册成功',
-                    content: '已发送邮件至' + req.body.username + '，请按照邮件提示激活。'
-                });
-
+                res.send( '已发送邮件至' + req.body.username + '，请按照邮件提示激活。');
             });
     });
 

@@ -5,8 +5,8 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var UserSchema = new Schema({
     username: String,           //用户名
     password: String,
-    title: String,              //博客名
-    description: String,        //博客描述
+    title: {type: String, default:'未命名博客'},              //博客名
+    description: {type: String, default: '博主很懒，还没有添加任何描述……'},       //博客描述
     active: {                   //激活状态
         type: Boolean,
         default: false
