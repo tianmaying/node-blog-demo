@@ -20,7 +20,7 @@ function comment(){
         .done(function(data){
             var comment = $('<div class="comment"></div>')
                 .append($('<h5></h5>').html(data.author))
-                .append(data.content);
+                .append($('<p></p>').html(data.content));
             $('#comments').append(comment);
             $('.alert').hide();
         })

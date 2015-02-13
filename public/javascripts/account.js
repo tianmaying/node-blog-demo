@@ -49,7 +49,9 @@ function signup(){
         .done(function(){
             location.href='/account/login';
         })
-        .fail(warn);
+        .fail(function(res){
+            warn(res.responseText);
+        });
 }
 
 function simpleValidate(){
