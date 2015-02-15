@@ -55,7 +55,7 @@ app.use(require('./utils/render'));
 
 app.use('/', require('./routes/home'));
 app.use('/account', require('./routes/account'));
-app.use('/admin', authRequired(require('./routes/admin')));
+app.use('/admin', authRequired, require('./routes/admin'));
 
 app.use(notFoundCatcher);
 app.use(app.get('env') === 'development' ? devErrorHandler : prodErrorHandler);

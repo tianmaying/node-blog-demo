@@ -17,36 +17,55 @@ router.route('/signup')
                 if (err)
                     return res.status(400).send(err.message || '未知原因');
 
-                fs.readFile(process.cwd() + '/data/demo.md', function (err, data) {
-                    if (err) return next(err);
-                    Post.create({
-                        title: '欢迎使用天码博客',
-                        content: data,
-                        author: user.id
+                crypto.randomBytes(20, function (err, buf) {
+                    user.activeToken = user._id + buf.toString('hex');
+                    user.activeExpires = Date.now() + 24 * 3600 * 1000;   // 24 hour
+
+                    var link = config.protocol + '://' + config.host + ':' + config.port + '/account/active/' + user.activeToken;
+                    mailer.send({
+                        to: req.body.username,
+                        subject: '欢迎注册TMY博客',
+                        html: '请点击 <a href="' + link + '">此处</a> 激活。'
+                    });
+
+                    user.save(function(err, user){
+                        if(err) return next(err);
+                        res.send('已发送邮件至' + user.username + '，请在24小时内按照邮件提示激活。');
                     });
                 });
-
-                var link = config.protocol + '://' + config.host + ':' + config.port + '/account/active/' + user._id;
-                mailer.send({
-                    to: req.body.username,
-                    subject: '欢迎注册天码博客',
-                    html: '请点击 <a href="' + link + '">此处</a> 激活。'
-                });
-                res.send( '已发送邮件至' + req.body.username + '，请按照邮件提示激活。');
             });
     });
 
-router.get('/active/:id', function (req, res, next) {
-    User.findByIdAndUpdate(req.params.id, {active: true}, function (err, user) {
-        if (err || !user)
+router.get('/active/:activeToken', function (req, res, next) {
+    User.findOne({
+        activeToken: req.params.activeToken,
+        activeExpires: {$gt: Date.now()}
+    }, function (err, user) {
+        if (err) return next(err);
+        if (!user) {
             return res.render('message', {
                 title: '激活失败',
                 content: '您的激活链接无效，请重新 <a href="/account/signup">注册</a>'
             });
+        }
 
-        res.render('message', {
-            title: '激活成功',
-            content: user.username + '已成功激活，请前往 <a href="/account/login">登录</a>'
+        user.active = true;
+        user.save(function (err, user) {
+            if (err) return next(err);
+
+            fs.readFile(process.cwd() + '/data/demo.md', function (err, data) {
+                if (err) return next(err);
+                Post.create({
+                    title: '欢迎使用TMY博客',
+                    content: data,
+                    author: user.id
+                });
+            });
+
+            res.render('message', {
+                title: '激活成功',
+                content: user.username + '已成功激活，请前往 <a href="/account/login">登录</a>'
+            })
         });
     });
 });

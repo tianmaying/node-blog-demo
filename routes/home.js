@@ -20,9 +20,9 @@ router.get('/', function (req, res, next) {
     })
 });
 
-router.get('/home', authRequired(function (req, res, next) {
+router.get('/home', authRequired, function (req, res, next) {
     res.redirect('/' + req.user.id);
-}));
+});
 
 router.get('/:id', function (req, res, next) {
     User.findById(req.params.id, function (err, author) {
@@ -63,7 +63,7 @@ router.route('/post/:id')
                 res.render('home/post', {post: post, title: post.title, author: post.author});
             })
     })
-    .post(authRequired(function (req, res, next) {
+    .post(authRequired, function (req, res, next) {
         Post.findById(req.params.id, function (err, post) {
             if (err) return next(err);
 
@@ -79,6 +79,6 @@ router.route('/post/:id')
                 });
             });
         })
-    }));
+    });
 
 module.exports = router;

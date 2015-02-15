@@ -46,9 +46,7 @@ function signup(){
         return;
     }
     $.post('', $('form').serialize())
-        .done(function(res){
-            info(res.responseText);
-        })
+        .done(info)
         .fail(function(res){
             warn(res.responseText);
         });

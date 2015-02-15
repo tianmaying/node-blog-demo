@@ -3,14 +3,22 @@ var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 var UserSchema = new Schema({
-    username: String,           //用户名
+    username: String,
     password: String,
-    title: {type: String, default:'未命名博客'},              //博客名
-    description: {type: String, default: '博主很懒，还没有添加任何描述……'},       //博客描述
-    active: {                   //激活状态
+    title: {
+        type: String,
+        default: '未命名博客'
+    },
+    description: {
+        type: String,
+        default: '博主很懒，还没有添加任何描述……'
+    },
+    active: {
         type: Boolean,
         default: false
     },
+    activeToken: String,
+    activeExpires: Date,
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });
