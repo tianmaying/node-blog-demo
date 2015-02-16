@@ -1,8 +1,7 @@
 <html>
 <head>
-    {{>head}}
+  {{>head}}
   <link rel="stylesheet" href="/stylesheets/admin.css">
-  <!--<script src="/javascripts/admin-post.js"></script>-->
 </head>
 
 <body id="profile">
@@ -14,7 +13,7 @@
   <div class="row">
 
     <div class="col-sm-3">
-        {{>profile_nav this}}
+      {{>profile_nav this}}
     </div>
 
     <div class="col-sm-9">
@@ -23,7 +22,17 @@
         <div class="panel-heading">{{user.username}} 的博客</div>
         <div class="panel-body">
 
-          <form class="form" method="post">
+          <form class="form" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+              <img class="pull-left img-circle avatar"
+                   src="{{user.avatar}}">
+              <div>
+                <label for="avatar">头像</label>
+                <input type="file" name="avatar" accept="image/*">
+                <p class="help-block">在这里选择并上传你的头像</p>
+              </div>
+            </div>
 
             <div class="form-group">
               <label for="title">博客名称</label>

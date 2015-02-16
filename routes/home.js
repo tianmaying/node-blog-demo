@@ -45,6 +45,7 @@ router.get('/:id', function (req, res, next) {
                     pager: pager,
                     author: author,
                     title: author.title,
+                    avatar: author.avatar,
                     description: author.description
                 });
 
