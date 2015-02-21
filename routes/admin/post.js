@@ -53,7 +53,7 @@ router.route('/:id')
         Post.findByIdAndRemove(req.params.id,function(err, rows){
             if(err) return next(err);
             res.end();
-        })
+        });
     });
 
 

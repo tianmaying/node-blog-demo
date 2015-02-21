@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
             title: '一个简单的博客系统',
             description: 'Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。'
         });
-    })
+    });
 });
 
 router.get('/home', authRequired, function (req, res, next) {
@@ -50,7 +50,7 @@ router.get('/:id', function (req, res, next) {
                 });
 
             });
-    })
+    });
 });
 
 router.route('/post/:id')
@@ -62,7 +62,7 @@ router.route('/post/:id')
 
                 Comment.populate(post.comments, 'author');
                 res.render('home/post', {post: post, title: post.title, author: post.author});
-            })
+            });
     })
     .post(authRequired, function (req, res, next) {
         Post.findById(req.params.id, function (err, post) {
@@ -79,7 +79,7 @@ router.route('/post/:id')
                     res.send({author: req.user.username, content: comment.content});
                 });
             });
-        })
+        });
     });
 
 module.exports = router;

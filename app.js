@@ -12,11 +12,11 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var hbs = require('hbs');
 var hbsutils = require('hbs-utils')(hbs);
-require('./utils/hbs-helpler')(hbs);
+require('./utils/hbs-helper')(hbs);
 var config = require('./config');
 
 // mongoose setup
-mongoose.connect(config.mongo.url);
+mongoose.connect(config.mongodb);
 
 // passport setup
 passport.use(User.createStrategy());
@@ -25,8 +25,8 @@ passport.deserializeUser(User.deserializeUser());
 
 // app setup
 var app = express();
-app.set('env', process.env.NODE_ENV || 'development');
-app.set('port', process.env.PORT || 3000);
+app.set('env', config.env);
+app.set('port', config.port);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 hbsutils.registerWatchedPartials(__dirname + '/views/partials');
@@ -51,7 +51,7 @@ else{
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(require('./utils/render'));
+app.use(require('./utils/locals'));
 
 app.use('/', require('./routes/home'));
 app.use('/account', require('./routes/account'));
@@ -66,8 +66,8 @@ app.listen(app.get('port'), function() {
 });
 
 process.on('uncaughtException', function(err) {
-    console.error((new Date).toUTCString() + ' uncaughtException found:',
-        err.stack || 'no stack info', 'exiting...')
+    console.error((new Date()).toUTCString() + ' uncaughtException found:',
+        err.stack || 'no stack info', 'exiting...');
     process.exit(1);
 });
 
@@ -76,7 +76,8 @@ function notFoundCatcher(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-};
+}
+
 function devErrorHandler(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -86,7 +87,8 @@ function devErrorHandler(err, req, res, next) {
     // print stacktrace
     console.log(err.message);
     console.log(err.stack);
-};
+}
+
 function prodErrorHandler(err, req, res, next) {
     res.status(err.status || 500);
 
@@ -94,6 +96,6 @@ function prodErrorHandler(err, req, res, next) {
     res.render('error', {
         error: err.message || err || 'unkown error'
     });
-};
+}
 
 module.exports = app;

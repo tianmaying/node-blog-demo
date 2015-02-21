@@ -7,7 +7,12 @@ module.exports = function(hbs){
     hbs.registerHelper('detailDate', function(date, block) {
         return dateFormat(date, 'yyyy-MM-dd hh:mm:ss');
     });
+
     hbs.registerHelper('excerpt', mdExcerpt);
+
+    hbs.registerHelper('equal', function(v1,v2,opts){
+        return v1 == v2 ? opts.fn(this) : opts.inverse(this);
+    });
 };
 
 function mdExcerpt(content){
@@ -31,9 +36,10 @@ function dateFormat(datetime, format) {
     }
     for (var k in date) {
         if (new RegExp("(" + k + ")").test(format)) {
-            format = format.replace(RegExp.$1, RegExp.$1.length == 1
-                ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ?
+                date[k] :
+                ("00" + date[k]).substr(("" + date[k]).length));
         }
     }
     return format;
-};
+}

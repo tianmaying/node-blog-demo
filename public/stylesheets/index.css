@@ -4,13 +4,13 @@
     margin-bottom: 20px;
 }
 
-.blog-item{
+#index .blog-item{
     padding: 25px 20px;
     background-color: #f8f8f8;
     border-radius: 7px;
     margin-bottom: 30px;
 }
-.blog-item .title{
+#index .blog-item .title{
     font-size: 18px;
     margin-top: 0;
     margin-bottom: 8px;
@@ -18,26 +18,26 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.blog-item div{
+#index .blog-item div{
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB";
 }
-.blog-item .user{
+#index .blog-item .user{
     margin-bottom: 5px;
 }
-.blog-item .description{
+#index .blog-item .description{
     height: 36px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
-.blog-item .glyphicon-home{
+#index .blog-item .glyphicon-home{
     font-size: 20px;
     color: #dbdbdb;
 }
-.blog-item .user {
+#index .blog-item .user {
     color: #979797;
 }
-.blog-item .user .glyphicon-user{
+#index .blog-item .user .glyphicon-user{
     color: #7ac6db;
 }

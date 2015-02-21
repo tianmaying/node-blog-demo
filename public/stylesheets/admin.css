@@ -1,5 +1,6 @@
 
-.container{
+
+#profile .container, #edit .container, #posts .container{
     margin-bottom: 20px;
 }
 

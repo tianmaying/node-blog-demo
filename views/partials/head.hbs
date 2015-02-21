@@ -1,6 +1,8 @@
 <title>{{title}}</title>
 
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="/lib/highlightjs/github.css">
@@ -10,4 +12,23 @@
 <script src="/lib/marked.min.js"></script>
 <script src="/lib/highlightjs/highlight.min.js"></script>
 
+
+{{#equal config.env 'development'}}
+
+<link rel="stylesheet" href="/stylesheets/account.css">
+<link rel="stylesheet" href="/stylesheets/admin.css">
+<link rel="stylesheet" href="/stylesheets/global.css">
+<link rel="stylesheet" href="/stylesheets/index.css">
+
+<script src="/javascripts/account.js"></script>
+<script src="/javascripts/admin-post.js"></script>
 <script src="/javascripts/common.js"></script>
+<script src="/javascripts/posts.js"></script>
+<script src="/javascripts/home-post.js"></script>
+
+{{else}}
+
+  <link rel="stylesheet" href="/dist/{{config.pkg.name}}.min.css">
+  <script src="/dist/{{config.pkg.name}}.min.js"></script>
+
+{{/equal}}

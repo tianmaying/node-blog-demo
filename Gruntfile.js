@@ -1,68 +1,82 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        express: {
+        cssmin: {
+            dist: {
+                options: {
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                },
+                files: {
+                    'public/dist/<%= pkg.name %>.min.css': ['public/stylesheets/**/*.css']
+                }
+            }
+        },
+        jshint: {
+            files: ['**/*.js', 'public/javascripts/**/*.js', '!**/node_modules/**', '!public/**']
+        },
+        concat: {
             options: {
-                script: './app.js'
+                separator: ';'
             },
+            dist: {
+                src: ['public/javascripts/**'],
+                dest: 'public/dist/<%= pkg.name %>.js'
+            }
+        },
+        uglify: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+            },
+            dist: {
+                files: {
+                    'public/dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                }
+            }
+        },
+        express: {
             dev: {
                 options: {
                     node_env: 'development',
-                    port: 3000,
+                    script: './app.js',
                     background: true
-                }
-            },
-            prod: {
-                options: {
-                    node_env: 'production',
-                    port: 3000,
-                    background: false
                 }
             }
         },
         shell: {
-            mongodb: {
-                command: 'mongod --dbpath ./data/db',
-                options: {
-                    async: true,
-                    stdout: false,
-                    stderr: true,
-                    failOnError: true,
-                    execOptions: {
-                        cwd: '.'
-                    }
-                }
+            options: {
+                async: true
             },
-            redis:{
-                command: 'redis-server',
-                options:{
-                    async: true,
-                    spawn: false
-                }
+            mongodb: {
+                command: 'mongod --dbpath ./data/db'
+            },
+            redis: {
+                command: 'redis-server'
             }
         },
         watch: {
             dev: {
                 files: ['app.js', '**/*.js', '!**/node_modules/**'],
                 tasks: ['express:dev'],
-                options: { spawn: false }
+                options: {spawn: false}
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-express-server');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-shell-spawn');
+    grunt.loadNpmTasks('grunt-express-server');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // 第三方服务器
     grunt.registerTask('server', ['shell:mongodb', 'shell:redis']);
 
-    // 发布
-    grunt.registerTask('dist', ['express:prod']);
-
-    // 开发
+    grunt.registerTask('dist', ['jshint', 'concat', 'uglify', 'cssmin']);
     grunt.registerTask('dev', ['express:dev', 'watch:dev']);
+
     grunt.registerTask('default', ['dev']);
 };
