@@ -2,8 +2,9 @@
   <div class="container">
 
     <a class="navbar-brand nav-external" href="/">
-      {{author.username}}
+      TMY
     </a>
+
     <div class="navbar-right">
       {{#if req.user}}
         <a class="btn btn-sm btn-grey dashboard" href="/admin/post"><i class="glyphicon glyphicon-cog"></i>Dashboard</a>
@@ -17,18 +18,17 @@
 <div class="banner">
   <div class="container">
     <div class="blog-intro">
+      {{#if avatar}}
+        <img class="img-circle pull-left avatar" src="{{avatar}}">
+      {{/if}}
       <h1 class="title">
-        {{author.title}}
+        {{title}}
       </h1>
+
       <div class="description">
-        {{author.description}}
+        {{description}}
       </div>
     </div>
-    
+
   </div>
-
-  <!-- <div class="sign">
-    <span>——天码营</span>
-  </div> -->
-
 </div>

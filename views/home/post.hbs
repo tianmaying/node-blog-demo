@@ -1,8 +1,6 @@
 <html>
 <head>
   {{>head}}
-  <link rel="stylesheet" href="/stylesheets/global.css">
-  <script src="/javascripts/home-post.js"></script>
 </head>
 
 <body id="post">
@@ -12,7 +10,7 @@
 <div class="container content">
   <nav class="post-nav">
     <ul class="pager">
-      <li class="previous"><a href="#" class="btn" href="/{{author.id}}"><span aria-hidden="true">&larr;</span> Go Back</a></li>
+      <li class="previous"><a class="btn" href="/{{post.author.id}}"><span aria-hidden="true">&larr;</span> Go Back</a></li>
     </ul>
   </nav>
   {{#with post}}

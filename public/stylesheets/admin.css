@@ -1,6 +1,13 @@
 
-.container{
+
+#profile .container, #edit .container, #posts .container{
     margin-bottom: 20px;
+}
+
+#profile img.avatar{
+  height: 65px;
+  width: 65px;
+  margin-right: 15px;
 }
 
 #edit #content{

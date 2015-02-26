@@ -3,29 +3,25 @@
  */
 
 var nodemailer = require('nodemailer');
-var _extend = require('util')._extend;
+var _ = require('lodash');
 var config = require('../config');
 
-// create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport(config.smtp);
 
-var defaultMailOptions = {
-    from: '天马营教程 <notification@tianmaying.com>',
+var defaultMail = {
+    from: '天马营教程 <' + config.smtp.auth.user + '>',
     subject: 'test',
     //to: 'bar@blurdybloop.com, baz@blurdybloop.com',
     //text: 'test text',
     html: '<b>test html</b>'
 };
 
-function sendMail(config){
-    var mailOptions = _extend(defaultMailOptions, config);
+function sendMail(mail){
+    mail = _.merge({}, defaultMail, mail);
 
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);
-        }
+    transporter.sendMail(mail, function(error, info){
+        if(error) return console.log('mail sent error', config.smtp, mail, error);
+        console.log('Message sent: ' + info.response);
     });
 }
 

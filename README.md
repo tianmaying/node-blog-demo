@@ -1,5 +1,7 @@
 ## 安装 mongoDB、redis
 
+## 获取代吗
+
 ## 解决依赖
 
 该项目使用npm管理依赖。在项目根路径，直接运行npm：
@@ -10,10 +12,11 @@ npm install
 
 ## 项目配置
 
-创建配置文件config.js，我们提供了示例配置config.js.example，可以基于该示例创建自己的配置：
+创建配置文件`config.js`，我们提供了示例配置`config.js.example`，可以基于该示例创建自己的配置：
 
 ```bash
 cp config.js.example config.js
+vim config.js
 ```
 
 ## 启动服务
@@ -23,14 +26,20 @@ cp config.js.example config.js
 grunt server
 ```
 
-## 构建运行
+## 构建并运行开发板
 
 ```bash
-# 开发版本
 grunt
+```
 
-# 部署版本
+## 构建并运行生产版
+
+```bash
+# 构建
 grunt dist
+
+# 运行
+npm start
 ```
 
 访问 http://localhost:3000 ！

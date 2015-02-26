@@ -12,13 +12,17 @@ require('mongoose-query-paginate');
 router.get('/', function (req, res, next) {
     User.find({}, function (err, users) {
         if (err) return next(err);
-        res.render('home/index', {users: users, title: '欢迎使用天码博客'});
-    })
+        res.render('home/index', {
+            users: users,
+            title: '一个简单的博客系统',
+            description: 'Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。'
+        });
+    });
 });
 
-router.get('/home', authRequired(function (req, res, next) {
+router.get('/home', authRequired, function (req, res, next) {
     res.redirect('/' + req.user.id);
-}));
+});
 
 router.get('/:id', function (req, res, next) {
     User.findById(req.params.id, function (err, author) {
@@ -37,26 +41,16 @@ router.get('/:id', function (req, res, next) {
             .populate('author')
             .paginate(options, function (err, pager) {
                 if (err) return next(err);
-
-                // => pagination = {
-                //  options: options,               // paginate options
-                //  results: [Document, ...],       // mongoose results
-                //  current: 5,                     // current page number
-                //  last: 12,                       // last page number
-                //  prev: 4,                        // prev number or null
-                //  next: 6,                        // next number or null
-                //  pages: [ 2, 3, 4, 5, 6, 7, 8 ], // page numbers
-                //  count: 125                      // document count
-                //};
-
                 res.render('home/user', {
                     pager: pager,
                     author: author,
-                    title: author.username
+                    title: author.title,
+                    avatar: author.avatar,
+                    description: author.description
                 });
 
             });
-    })
+    });
 });
 
 router.route('/post/:id')
@@ -68,9 +62,9 @@ router.route('/post/:id')
 
                 Comment.populate(post.comments, 'author');
                 res.render('home/post', {post: post, title: post.title, author: post.author});
-            })
+            });
     })
-    .post(authRequired(function (req, res, next) {
+    .post(authRequired, function (req, res, next) {
         Post.findById(req.params.id, function (err, post) {
             if (err) return next(err);
 
@@ -85,7 +79,7 @@ router.route('/post/:id')
                     res.send({author: req.user.username, content: comment.content});
                 });
             });
-        })
-    }));
+        });
+    });
 
 module.exports = router;

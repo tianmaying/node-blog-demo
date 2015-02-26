@@ -1,58 +1,32 @@
 <html>
 <head>
-    {{>head}}
-  <link rel="stylesheet" href="/stylesheets/global.css">
-  <link rel="stylesheet" href="/stylesheets/index.css">
+  {{>head}}
 </head>
 
 <body id="index">
 
-<div class="banner">
-  <div class="container">
-    <div class="blog-intro">
-      <h1 class="title">
-        {{title}}
-      </h1>
-      <div class="description">
-        一个简单的博客系统。Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。
-      </div>
-    </div>
-  </div>
-</div>
-
+{{> home_header}}
 
 <div class="container content">
   <h2>已注册用户</h2>
+
   <div class="row">
     {{#each users}}
-    <div class="col-md-4 col-sm-6">
-      <div class="blog-item">
-        <span class="glyphicon glyphicon-home pull-right"></span>
-        <h3 class="title"><a class="inverse" href="/{{id}}">{{title}}</a></h3>
-        <div class="user">
-          <span class="glyphicon glyphicon-user"></span>
-          {{username}}
+      <div class="col-md-4 col-sm-6">
+        <div class="blog-item">
+          <span class="glyphicon glyphicon-home pull-right"></span>
+
+          <h3 class="title"><a class="inverse" href="/{{id}}">{{title}}</a></h3>
+
+          <div class="user">
+            <span class="glyphicon glyphicon-user"></span>
+            {{username}}
+          </div>
+          <div class="description">{{description}}</div>
         </div>
-        <div class="description">{{description}}</div>
       </div>
-    </div>
     {{/each}}
-
   </div>
-  <!-- <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2 class="panel-title">Registered Blogs</h2>
-    </div>
-    <div class="panel-body">
-
-      <ul class="list-unstyled">
-          {{#each users}}
-            <li><a href="/{{id}}">{{username}}</a></li>
-          {{/each}}
-      </ul>
-
-    </div>
-  </div> -->
 
 </div>
 {{>footer}}
