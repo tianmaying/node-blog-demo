@@ -21,7 +21,7 @@ router.route('/register')
                     user.activeToken = user._id + buf.toString('hex');
                     user.activeExpires = Date.now() + 24 * 3600 * 1000;   // 24 hour
 
-                    var link = config.schema + config.host + ':' + config.port + '/account/active/' + user.activeToken;
+                    var link = config.schema + config.outerHost + ':' + config.outerPort + '/account/active/' + user.activeToken;
                     mailer.send({
                         to: req.body.username,
                         subject: '欢迎注册 TMY BLOG',
@@ -86,7 +86,7 @@ router.route('/forgot')
                 user.resetPasswordToken = buf.toString('hex');
                 user.resetPasswordExpires = Date.now() + 3600000;   // 1 hour
 
-                var link = config.schema + config.host + ':' + config.port + '/account/reset/' + user.resetPasswordToken;
+                var link = config.schema + config.outerHost + ':' + config.outerPort + '/account/reset/' + user.resetPasswordToken;
                 user.save(function (err, user) {
                     if (err) return next(err);
                     mailer.send({
@@ -140,7 +140,7 @@ router.route('/reset/:token')
                     res.render('message', {
                         title: '重置密码成功',
                         content: user.username + '的密码已成功重置，请前往<a href="' +
-                        config.schema + config.host + ':' + config.port + '/account/login">登录</a>。'
+                        config.schema + config.outerHost + ':' + config.outerPort + '/account/login">登录</a>。'
                     });
                 });
             });
