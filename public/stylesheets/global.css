@@ -14,7 +14,7 @@ footer a{
 .banner{
   position: relative;
   height: 280px;
-  background-image: url('/images/bg1.jpeg');
+  background-image: url('/images/banner.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 30%;
@@ -43,4 +43,11 @@ footer a{
 .post .post-title a:hover{
   color: #333;
   text-decoration: none;
+}
+
+#home-header .navbar-nav>li>a, #home-header .navbar-brand{
+  color: #ccc;
+}
+#home-header .navbar-nav>li>a:hover{
+  color: white;
 }
