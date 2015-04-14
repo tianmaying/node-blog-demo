@@ -14,17 +14,16 @@ router.get('/', function (req, res, next) {
         if (err) return next(err);
         res.render('home/index', {
             users: users,
-            title: '一个简单的博客系统',
-            description: 'Node.js 后台，Handlebars 模板引擎，Bootstrap Css 框架。'
+            title: 'TMY BLOG: 一个简单的博客系统'
         });
     });
 });
 
 router.get('/home', authRequired, function (req, res, next) {
-    res.redirect('/' + req.user.id);
+    res.redirect('/user/' + req.user.id);
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/user/:id', function (req, res, next) {
     User.findById(req.params.id, function (err, author) {
         if (err || !author) return next(err);
 
@@ -43,12 +42,9 @@ router.get('/:id', function (req, res, next) {
                 if (err) return next(err);
                 res.render('home/user', {
                     pager: pager,
-                    author: author,
-                    title: author.title,
-                    avatar: author.avatar,
-                    description: author.description
+                    title: author.username + ' 的首页',
+                    author: author
                 });
-
             });
     });
 });
@@ -61,7 +57,11 @@ router.route('/post/:id')
                 if (err) return next(err);
 
                 Comment.populate(post.comments, 'author');
-                res.render('home/post', {post: post, title: post.title, author: post.author});
+                res.render('home/post', {
+                    post: post,
+                    title: post.title,
+                    author: post.author
+                });
             });
     })
     .post(authRequired, function (req, res, next) {

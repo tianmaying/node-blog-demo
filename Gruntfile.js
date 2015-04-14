@@ -5,25 +5,13 @@ module.exports = function (grunt) {
 
         cssmin: {
             dist: {
-                options: {
-                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-                },
                 files: {
                     'public/dist/<%= pkg.name %>.min.css': ['public/stylesheets/**/*.css']
                 }
             }
         },
         jshint: {
-            files: ['**/*.js', 'public/javascripts/**/*.js', '!**/node_modules/**', '!public/**']
-        },
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: ['public/javascripts/**'],
-                dest: 'public/dist/<%= pkg.name %>.js'
-            }
+            files: ['**/*.js', '!**/node_modules/**', '!public/**']
         },
         uglify: {
             options: {
@@ -31,7 +19,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'public/dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'public/dist/<%= pkg.name %>.min.js': ['public/javascripts/**.js']
                 }
             }
         },
@@ -67,7 +55,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell-spawn');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -75,7 +62,8 @@ module.exports = function (grunt) {
     // 第三方服务器
     grunt.registerTask('server', ['shell:mongodb', 'shell:redis']);
 
-    grunt.registerTask('dist', ['jshint', 'concat', 'uglify', 'cssmin']);
+    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('dist', ['uglify', 'cssmin']);
     grunt.registerTask('dev', ['express:dev', 'watch:dev']);
 
     grunt.registerTask('default', ['dev']);

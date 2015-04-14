@@ -1,5 +1,3 @@
-# 欢迎使用天码博客
-
 天码博客支持 [markdown](http://zh.wikipedia.org/zh-cn/Markdown) 语法，以一种文本方式来撰写博客。我们来看markdown的简洁之处吧！
 
 

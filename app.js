@@ -11,7 +11,6 @@ var authRequired = require('./utils/auth-required.js');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var hbs = require('hbs');
-var hbsutils = require('hbs-utils')(hbs);
 require('./utils/hbs-helper')(hbs);
 var config = require('./config');
 
@@ -27,9 +26,11 @@ passport.deserializeUser(User.deserializeUser());
 var app = express();
 app.set('env', config.env);
 app.set('port', config.port);
+
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-hbsutils.registerWatchedPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/partials');
+//hbsutils.registerWatchedPartials(__dirname + '/views/partials');
 
 // routes
 app.use(favicon(__dirname + '/public/images/favicon.ico'));

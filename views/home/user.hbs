@@ -12,42 +12,37 @@
   {{#each pager.results}}
     <div class="post">
       <div class="post-heading">
-        <h3 class="post-title"><a class="inverse" href="/post/{{id}}">{{title}}</a></h3>
+        <h2 class="post-title"><a class="inverse" href="/post/{{id}}">{{title}}</a></h2>
+
         <div class="post-info">
-          <small class="text-muted">Written 
-          <!-- by <strong><a class="inverse" href="/{{author.id}}">{{author.username}}</a></strong> -->
-             on {{detailDate date}}</small>
-          <small class="pull-right"><a href="/post/{{id}}#comments">{{comments.length}} Comments</a></small>
-          <!-- <small class="text-muted">Written by Me on {{detailDate date}}</small> -->
+          <p>
+            <span class="text-muted">{{detailDate date}}</span>
+            <span class="pull-right"><a href="/post/{{id}}#comments">{{comments.length}} 个评论</a></span>
+          </p>
+
+          <div class="clearfix"></div>
         </div>
-        
       </div>
-      <div class="post-content">
-        {{excerpt content}}
+      <div class="post-excerpt">
+        <p>{{excerpt content}}</p>
       </div>
     </div>
     <hr>
   {{/each}}
 
-
-  <!-- <nav class="page-nav">
-    <ul class="pagination">
-      <li><a href="#">&laquo;</a></li>
-      
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-
-      <li><a href="#">&raquo;</a></li>
-    </ul>
-  </nav> -->
   <nav class="page-nav">
     <ul class="pagination">
-      <li><a href="?page={{pager.prev}}">&laquo;</a></li>
-      {{#each pager.pages}}
-        <li {{#if isCurrentPage}} class="active" {{/if}}><a href="?page={{this}}">{{this}}</a></li>
-      {{/each}}
-      <li><a href="?page={{pager.next}}">&raquo;</a></li>
+      {{#with pager}}
+        <li {{#unless prev}}class="disabled"{{/unless}}>
+          <a href="?page={{prev}}">&laquo;</a>
+        </li>
+        {{#each pages}}
+          <li {{#equal ../current this}}class="active"{{/equal}}><a href="?page={{this}}">{{this}}</a></li>
+        {{/each}}
+        <li {{#unless next}}class="disabled"{{/unless}}>
+          <a href="?page={{next}}">&raquo;</a>
+        </li>
+      {{/with}}
     </ul>
   </nav>
 

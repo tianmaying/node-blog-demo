@@ -1,34 +1,29 @@
-<nav class="navbar navbar-static" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-
-    <a class="navbar-brand nav-external" href="/">
-      TMY
-    </a>
-
-    <div class="navbar-right">
-      {{#if req.user}}
-        <a class="btn btn-sm btn-grey dashboard" href="/admin/post"><i class="glyphicon glyphicon-cog"></i>Dashboard</a>
-      {{else}}
-        <a class="btn btn-sm btn-red" href="/account/login">Login</a>
-        <a class="btn btn-sm btn-hollow" href="/account/signup">Sign Up</a>
-      {{/if}}
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">TMY Blog</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      {{> user_nav}}
     </div>
   </div>
 </nav>
+
 <div class="banner">
   <div class="container">
     <div class="blog-intro">
-      {{#if avatar}}
-        <img class="img-circle pull-left avatar" src="{{avatar}}">
-      {{/if}}
-      <h1 class="title">
-        {{title}}
-      </h1>
+      <img class="img-circle pull-left avatar" src="{{author.avatar}}">
 
-      <div class="description">
-        {{description}}
-      </div>
+      <h1 class="title">{{author.title}}</h1>
+
+      <div class="description">{{author.description}}</div>
     </div>
-
   </div>
 </div>

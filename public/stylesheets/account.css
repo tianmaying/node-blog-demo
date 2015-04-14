@@ -11,11 +11,11 @@
     vertical-align: middle;
 }
 
-body#login, body#signup{
+body#login, body#register{
     background: #3c3c3c;
 }
 
-#login, #signup h3{
+#login, #register h3{
     color: #ffffff;
     margin-bottom: 30px;
 }
@@ -34,11 +34,11 @@ body#login, body#signup{
     display: inline-block;
 }
 
-#signup form{
+#register form{
     max-width: 300px;
     margin: 0 auto;
 }
-#signup input{
+#register input{
     margin-bottom: 5px;
 }
 #forgot #username{

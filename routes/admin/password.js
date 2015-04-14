@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.route('/')
     .get(function (req, res) {
-        res.render('admin/password', {user: req.user, active_password: true, title: '修改密码'});
+        res.render('admin/password', {user: req.user, active_password: true, title: '更改密码'});
     })
     .post(function (req, res) {
         if (req.body.new != req.body.repeat) {

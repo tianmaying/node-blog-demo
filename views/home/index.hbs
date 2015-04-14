@@ -5,30 +5,96 @@
 
 <body id="index">
 
-{{> home_header}}
+<!-- NAVBAR
+================================================== -->
+<div class="navbar-wrapper">
+  <div class="container">
 
-<div class="container content">
-  <h2>已注册用户</h2>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TMY Blog</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">关于</a></li>
+            <li><a href="#">联系我们</a></li>
+          </ul>
+          {{>user_nav}}
+        </div>
+      </div>
+    </nav>
 
+  </div>
+</div>
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img class="first-slide" src="/images/mac.png" alt="First slide">
+
+      <div class="container">
+        <div class="carousel-caption">
+          <h2>极致体验</h2>
+
+          <p>优雅简洁的外观设计，细心的交互方式，帮助您更快捷地创建博客，更方便地浏览您的博客内容。</p>
+
+          <p><a class="btn btn-primary" href="/account/register">立即加入</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img class="second-slide" src="/images/cloud.png" alt="Second slide">
+
+      <div class="container">
+        <div class="carousel-caption">
+          <h2>Markdown 引擎</h2>
+
+          <p>Sample Blog 使用 Markdown 创建易读易写的博客文章。Markdown 由一些经过精挑细选符号所组成，其作用一目了然。</p>
+
+          <p><a class="btn btn-primary" href="/account/register">深入了解</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.carousel -->
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
   <div class="row">
     {{#each users}}
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-item">
-          <span class="glyphicon glyphicon-home pull-right"></span>
+      <div class="col-lg-4">
+        <img class="img-circle" src="{{avatar}}" width="140" height="140">
 
-          <h3 class="title"><a class="inverse" href="/{{id}}">{{title}}</a></h3>
+        <h2>{{title}}</h2>
 
-          <div class="user">
-            <span class="glyphicon glyphicon-user"></span>
-            {{username}}
-          </div>
-          <div class="description">{{description}}</div>
-        </div>
+        <p>{{description}}</p>
+
+        <p><a class="btn btn-default" href="/user/{{id}}" role="button">访问 &raquo;</a></p>
       </div>
     {{/each}}
   </div>
 
 </div>
+<!-- /.container -->
+
 {{>footer}}
+
 </body>
 </html>

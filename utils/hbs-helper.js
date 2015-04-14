@@ -2,22 +2,25 @@
  * Created by harttle on 1/7/15.
  */
 
-
-module.exports = function(hbs){
+module.exports = function(hbs) {
     hbs.registerHelper('detailDate', function(date, block) {
         return dateFormat(date, 'yyyy-MM-dd hh:mm:ss');
     });
 
     hbs.registerHelper('excerpt', mdExcerpt);
 
-    hbs.registerHelper('equal', function(v1,v2,opts){
+    hbs.registerHelper('equal', function(v1, v2, opts) {
         return v1 == v2 ? opts.fn(this) : opts.inverse(this);
+    });
+
+    hbs.registerHelper('unless', function(v1, opts) {
+        return v1 ? opts.inverse(this) : opts.fn(this);
     });
 };
 
-function mdExcerpt(content){
+function mdExcerpt(content) {
     var result = content.replace(/[#\(\)\[\]\n!`]+/g, ' ');
-    if(result.length>300)   result = result.slice(0, 300) + '...';
+    if (result.length > 300)   result = result.slice(0, 300) + '...';
     return result;
 }
 

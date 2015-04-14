@@ -7,9 +7,9 @@ var crypto = require('crypto');
 var fs = require('fs');
 var config = require('../config');
 
-router.route('/signup')
+router.route('/register')
     .get(function (req, res) {
-        res.render('account/signup', {title: '注册'});
+        res.render('account/register', {title: '注册'});
     })
     .post(function (req, res, next) {
         User.register(new User({username: req.body.username}), req.body.password,
@@ -24,7 +24,7 @@ router.route('/signup')
                     var link = config.schema + config.host + ':' + config.port + '/account/active/' + user.activeToken;
                     mailer.send({
                         to: req.body.username,
-                        subject: '欢迎注册TMY博客',
+                        subject: '欢迎注册 TMY BLOG',
                         html: '请点击 <a href="' + link + '">此处</a> 激活。'
                     });
 

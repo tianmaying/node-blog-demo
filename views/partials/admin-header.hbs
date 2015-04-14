@@ -4,17 +4,13 @@
     <a href="/"><i class="fa fa-home"></i></a>
     {{title}}
     <div class="pull-right">
-      <a class="btn btn-sm btn-default" href="/{{req.user.id}}">
+      <a class="btn btn-sm btn-default" href="/user/{{req.user.id}}">
         <i class="fa fa-home"></i>
-        我的主页
+        我的首页
       </a>
       <a class="btn btn-sm btn-success" href="/admin/post/new" target="_blank">
         <i class="fa fa-file"></i>
         新建博文
-      </a>
-      <a class="btn btn-sm btn-warning" href="/account/logout">
-        <i class="fa fa-sign-out"></i>
-        登出
       </a>
     </div>
   </h3>

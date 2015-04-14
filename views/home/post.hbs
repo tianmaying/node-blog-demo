@@ -8,61 +8,51 @@
 {{>home_header}}
 
 <div class="container content">
-  <nav class="post-nav">
-    <ul class="pager">
-      <li class="previous"><a class="btn" href="/{{post.author.id}}"><span aria-hidden="true">&larr;</span> Go Back</a></li>
-    </ul>
-  </nav>
+
   {{#with post}}
     <div class="post">
       <div class="post-heading">
-        <h3 class="post-title">{{title}}</h3>
+        <h1 class="post-title">{{title}}</h1>
+
         <div class="post-info">
-          <small class="text-muted">Written 
-            <!-- by <strong><a class="inverse" href="/{{author.id}}">{{author.username}}</a></strong>  -->
-            on {{detailDate date}}</small>
-          <small class="pull-right"><a href="#comments">{{comments.length}} Comments</a></small>
+          <span class="text-muted">{{detailDate date}}</span>
+          <span class="pull-right"><a href="#comments">{{comments.length}} 个评论</a></span>
         </div>
+        <div class="clearfix"></div>
         <hr>
       </div>
 
       <div class="post-content">
         <script type="text/plain" id="content">{{{content}}}</script>
       </div>
-      <hr>
     </div>
 
-    <div id="comments">
-      <h4 class="color-blue">Comments</h4>
+    <div id="comments" style="margin-top: 50px;">
+      <h3>评论</h3>
+      <hr>
       {{#each comments}}
         <div class="comment">
-          <h5><a class="inverse" href="/{{author.id}}">{{author.username}}</a></h5>
-          <p>{{content}}</p>
+          <h5><a href="/user/{{author.id}}">{{author.username}}</a>：</h5>
+          <blockquote>{{content}}</blockquote>
         </div>
       {{/each}}
     </div>
-
-    <hr>
-
-    <div>
-      <h4 class="color-blue">Leave a Comment</h4>
-      <form>
-        <textarea name="content" id="new-comment" class="form-control"></textarea>
-
-        <div class="alert alert-danger" style="display: none;"></div>
-
-        <div id="operation">
-          {{#if ../req.user}}
-            <!-- <span>{{../req.user.username}}</span> -->
-            <a class="btn btn-red" onclick="comment()">Post</a>
-            <span>Logged in as Usermann</span>
-          {{else}}
-            <a class="btn btn-red" href="/account/login">Login</a>
-            <span>Log in to comment</span>
-          {{/if}}
-        </div>
-      </form>
-    </div>
   {{/with}}
+
+  <form>
+    <div class="form-group">
+      <textarea name="content" id="new-comment" class="form-control"></textarea>
+      <div class="alert alert-danger" style="display: none;"></div>
+    </div>
+
+    <div class="form-group">
+      {{#if req.user}}
+        <a class="btn btn-primary" onclick="comment()">发布</a>
+      {{else}}
+        <a class="btn btn-primary" href="/account/login">登录</a>
+      {{/if}}
+    </div>
+  </form>
+</div>
 </body>
 </html>
