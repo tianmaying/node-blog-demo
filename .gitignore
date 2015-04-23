@@ -2,3 +2,5 @@
 dump.rdb
 node_modules
 config.js
+public/upload
+*.log
