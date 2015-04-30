@@ -11,7 +11,6 @@ var authRequired = require('./utils/auth-required.js');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var hbs = require('hbs');
-require('./utils/hbs-helper')(hbs);
 var config = require('./config');
 
 // mongoose setup
@@ -30,7 +29,7 @@ app.set('port', config.port);
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 hbs.registerPartials(__dirname + '/views/partials');
-//hbsutils.registerWatchedPartials(__dirname + '/views/partials');
+require('./utils/hbs-helper')(hbs);
 
 // routes
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
