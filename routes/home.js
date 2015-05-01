@@ -37,7 +37,6 @@ router.get('/user/:id', function (req, res, next) {
 
         Post.find(cond)
             .sort({_id: -1})
-            .populate('author')
             .paginate(options, function (err, pager) {
                 if (err) return next(err);
                 res.render('home/user', {
