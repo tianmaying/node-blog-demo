@@ -51,3 +51,10 @@ footer a{
 #home-header .navbar-nav>li>a:hover{
   color: white;
 }
+
+.comment img{
+  height: 45px;
+  width: 45px;
+  border-radius: 45px;
+  margin-right: 10px;
+}

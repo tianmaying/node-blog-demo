@@ -19,12 +19,8 @@ function comment(){
     $('#new-comment').val('');
 
     $.post('', {content: content})
-        .done(function(data){
-            var comment = $('<div class="comment"></div>')
-                .append($('<h5></h5>').html(data.author))
-                .append($('<p></p>').html(data.content));
-            $('#comments').append(comment);
-            $('.alert').hide();
+        .done(function(){
+            location.reload();
         })
         .fail(function(data){
             return $('.alert').html('评论失败：'+data).show();

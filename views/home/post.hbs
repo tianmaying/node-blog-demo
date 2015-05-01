@@ -32,7 +32,9 @@
       <hr>
       {{#each comments}}
         <div class="comment">
-          <h5><a href="/user/{{author.id}}">{{author.username}}</a>：</h5>
+          <h5>
+            <img src="{{author.avatar}}">
+            <a href="/user/{{author.id}}">{{author.username}}</a>：</h5>
           <blockquote>{{content}}</blockquote>
         </div>
       {{/each}}
